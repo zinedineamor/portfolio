@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mon CV</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Style global, même que les autres pages -->
+  <style>
+    /* Styles spécifiques à la page CV */
+    body {
+      background: linear-gradient(135deg, #FF7F00, #FFD500);
+      color: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      /* Ne PAS mettre display:flex ici, pour ne pas casser la navbar */
+    }
+
+    main {
+      max-width: 900px;
+        margin: 100px auto 60px;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      color: #fff;
+    }
+
+    .content {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .image-wrapper {
+      flex: 1 1 300px;
+      min-width: 280px;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .text-wrapper {
+      flex: 2 1 400px;
+      min-width: 280px;
+      color: #ddd;
+    }
+
+    .text-wrapper h2 {
+      color: #FF7F00;
+      margin-bottom: 15px;
+    }
+
+    .text-wrapper p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .btn-download {
+      background-color: #FF7F00;
+      color: #1a1a1a;
+      font-weight: bold;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: block;
+      margin: 30px auto 0 auto;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      width: max-content;
+    }
+
+    .btn-download:hover {
+      background-color: #e06a00;
+      color: #fff;
+    }
+
+    @media (max-width: 700px) {
+      .content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .text-wrapper, .image-wrapper {
+        min-width: auto;
+      }
+      .btn-download {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+  <main>
+    <div class="content">
+      <div class="image-wrapper">
+        <img src="images/competence.png" alt="Mes compétences" />
+      </div>
+      <div class="text-wrapper">
+        <h2>Mes Compétences &amp; Mes Objectifs</h2>
+        <p>
+          Je maîtrise plusieurs langages de programmation comme Java, Python, PHP, HTML et CSS, avec une bonne connaissance de la programmation orientée objet et UML, notamment en Java et PHP. J’utilise Git et GitHub pour la gestion de versions. En bases de données, je sais écrire du SQL et concevoir des bases avec la méthode Merise en utilisant WinDesign et JMerise. Je suis aussi familier avec la virtualisation via VirtualBox, VMWare et Hyper-V. Côté logiciels, je travaille avec la suite Office, NetVibes, Wamp et Lamp. Enfin, je maîtrise plusieurs systèmes d’exploitation : Windows 10, Windows Server 2012/2021, Linux Debian et Ubuntu. Après mon BTS, je souhaite poursuivre mes études en licence professionnelle ou intégrer la meilleure école qui m’acceptera pour approfondir mes compétences et me spécialiser dans mon domaine.
+
+
+        </p>
+      </div>
+    </div>
+    <a href="images/CV.pdf" download class="btn-download">Télécharger mon CV</a>
+  </main>
+
+<footer class="footer" style="background:#222; padding:20px; text-align:center; color:#fff;">
+  <p>&copy; 2025 Zinedine AMOR - Tous droits réservés</p>
+  <div class="social-links" style="margin-top:10px;">
+    <a href="https://www.linkedin.com/in/zinedine-amor-441492311/" aria-label="LinkedIn" target="_blank" style="margin:0 10px; color:#FF7F00; font-size:24px;">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/YominoRigolo" aria-label="GitHub" target="_blank" style="margin:0 10px; color:#FF7F00; font-size:24px;">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:zinedineamor.pro@gmail.com" aria-label="Email" style="margin:0 10px; color:#FF7F00; font-size:24px;">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>

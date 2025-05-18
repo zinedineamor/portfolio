@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mon Stage - Allianz</title>
+  <link rel="stylesheet" href="css/style.css"> <!-- Ton fichier CSS global -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #FF7F00, #FFD500);
+      color: #fff;
+    }
+
+    main {
+      max-width: 900px;
+         margin: 100px auto 60px;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: #FF7F00;
+      margin-bottom: 1.5em;
+      text-align: center;
+    }
+
+    /* Bloc 1 : logo + texte */
+    .bloc1 {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .bloc1 .logo {
+      flex: 0 0 140px;
+    }
+
+    .bloc1 .logo img {
+      width: 140px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .bloc1 .texte {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Bloc 2 : ce que je fais */
+    .bloc2 {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      padding: 20px 25px;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Bloc 3 : carte + texte CEJM */
+    .bloc3 {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    #map {
+      flex: 0 0 300px;
+      height: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      background: #eee;
+    }
+
+    .texte-cejm {
+      flex: 1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      padding: 20px 25px;
+      color: #fff;
+      min-width: 280px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #bbb;
+    }
+
+    .social-links a {
+      color: #FF7F00;
+      margin: 0 10px;
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .bloc1, .bloc3 {
+        flex-direction: column;
+        align-items: center;
+      }
+      .bloc1 .logo, #map {
+        flex: none;
+        width: 140px;
+        margin-bottom: 20px;
+      }
+      .bloc3 .texte-cejm {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+  <main>
+    <h1>Mon stage</h1>
+
+    <!-- Bloc 1 : logo + présentation entreprise -->
+    <div class="bloc1">
+      <div class="logo">
+        <img src="images/allianz_logo.png" alt="Logo Allianz" />
+      </div>
+      <div class="texte">
+        J'effectue mon stage chez <strong>Allianz</strong>, une entreprise internationale spécialisée dans l'assurance et les services financiers.  
+        Mon lieu de stage est situé à <strong>Saint-Ouen</strong>.  
+        Cette expérience me permet de découvrir le fonctionnement d’une grande structure et de participer à des projets concrets en lien avec mon BTS SIO.
+      </div>
+    </div>
+
+    <!-- Bloc 2 : ce que je fais -->
+    <div class="bloc2">
+      <strong>Ce que je fais :</strong><br/>
+      Durant ce stage, je travaille principalement sur l'automatisation des processus de revue des contrats et questionnaires de sécurité.  
+      Je développe des workflows avec Power Automate et participe à l’intégration d’outils innovants comme Allianz GPT pour améliorer l’analyse des formulaires clients.
+    </div>
+
+    <!-- Bloc 3 : carte + présentation CEJM -->
+    <div class="bloc3">
+      <div id="map"></div>
+      <div class="texte-cejm">
+        <strong>Présentation CEJM de l'entreprise :</strong><br/>
+        Allianz est un leader mondial dans le secteur de l’assurance et de la gestion d’actifs. L'entreprise est une Société Anonyme (SA), ce qui signifie que son capital est divisé en actions et que la responsabilité des actionnaires est limitée à leurs apports. Ce statut juridique est adapté aux grandes entreprises cotées en bourse.
+
+Allianz propose une large gamme de produits d’assurance : vie, santé, automobile, habitation, ainsi que des services financiers. Son modèle économique repose sur la gestion des risques et la satisfaction client. Allianz opère dans de nombreux pays et emploie des dizaines de milliers de collaborateurs.
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 Zinedine AMOR - Tous droits réservés</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/zinedine-amor-441492311/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/YominoRigolo" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:zinedineamor.pro@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </footer>
+
+  <!-- MAP JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([48.9115, 2.3346], 16); // Coordonnées approximatives
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([48.9115, 2.3346])
+      .addTo(map)
+      .bindPopup("Allianz - 7 rue Dora Maar, Saint-Ouen")
+      .openPopup();
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zinedine AMOR - Portfolio BTS SIO SLAM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Barre de navigation -->
+   <body>
+  <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+</body>
+
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bonjour, je suis Zinedine AMOR</h1>
+                    <p>Étudiant en BTS SIO (option SLAM) au lycée René Descartes.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="images/profile.jpg" alt="Photo de profil de Zinedine AMOR" class="profile-img">
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <h2>À propos de moi</h2>
+            <p>Je suis actuellement étudiant en BTS SIO (Services Informatiques aux Organisations) au lycée René Descartes à Champs-sur-Marne. J’y développe mes compétences en développement et en administration système, tout en découvrant les différents métiers de l’informatique. Ce portfolio me permet de présenter ce que j’apprends au fil de ma formation, à travers des projets concrets et des expériences qui m’ont permis de progresser.</p>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <p>&copy; 2025 Zinedine AMOR - Tous droits réservés</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/zinedine-amor-441492311/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YominoRigolo" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="zinedineamor.pro@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
