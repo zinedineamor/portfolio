@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projet Qui est-ce ? - Zinedine AMOR</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Ton fichier CSS global -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <style>
+    /* Reset et styles globaux */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a00, #ffdb4d);
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Conteneur principal */
+    main {
+      flex-grow: 1;
+      padding: 40px 60px;
+      background-color: #2f2f2f;
+      max-width: 1200px;
+      margin: 100px auto 60px;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+      color: #ddd;
+    }
+
+    /* Titres */
+    h2 {
+      color: #ff7700;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 2.8rem;
+      letter-spacing: 1.5px;
+    }
+    h3 {
+      color: #ff7700;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-size: 1.9rem;
+    }
+
+    /* Paragraphes */
+    p {
+      line-height: 1.65;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #ccc;
+    }
+
+    strong {
+      color: #ff7700;
+    }
+
+    a:hover {
+        text-decoration: none !important;
+    }
+
+
+    a {
+      color: #ff7700;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+      color: #e66000;
+    }
+
+    /* Bouton Jouer */
+    .btn-play {
+      display: inline-block;
+      background-color: #ff7700;
+      color: #2f2f2f;
+      padding: 14px 36px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 119, 0, 0.75);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      text-decoration: none;
+      margin-top: 40px;
+    }
+    .btn-play:hover, .btn-play:focus {
+      background-color: #e66000;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(230, 96, 0, 0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main {
+        padding: 30px 25px;
+        margin: 20px;
+      }
+      h2 {
+        font-size: 2.4rem;
+      }
+      h3 {
+        font-size: 1.6rem;
+      }
+      .btn-play {
+        padding: 12px 28px;
+        font-size: 1.1rem;
+      }
+    }
+    @media (max-width: 480px) {
+      main {
+        padding: 20px 15px;
+        margin: 15px;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <!-- FontAwesome CDN pour les icônes sociales -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+
+<div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+  <main role="main" aria-labelledby="main-title">
+
+    <h2 id="main-title">Projet : <span>Qui est-ce ?</span> <small>(avec 1 mensonge autorisé)</small></h2>
+
+    <p>
+      Ce projet a été réalisé dans le cadre d'un devoir demandé par mon <strong>professeur</strong> en BTS SIO.
+      L'objectif principal était de développer un jeu de devinettes interactif en JavaScript, avec un système de score capable de
+      gérer la complexité introduite par la possibilité pour le joueur de mentir une fois pendant la partie.
+    </p>
+
+    <p>
+      J'ai conçu et dessiné personnellement tous les personnages du jeu, ce qui permet d'avoir une esthétique originale et cohérente,
+      et montre mes compétences en dessin numérique ainsi qu'en intégration graphique.
+      Le code source est entièrement <strong>open source</strong> et disponible sur mon
+      <a href="https://github.com/zinedineamor/quiestcedescartes" target="_blank" rel="noopener noreferrer">compte GitHub</a> pour une transparence totale et
+      permettre à d'autres développeurs d'étudier ou de contribuer au projet.
+    </p>
+
+    <h3>Fonctionnement détaillé du jeu</h3>
+
+    <p>
+      Le joueur doit deviner le personnage secret en répondant à une série de questions par "oui" ou "non".
+      Chaque question porte sur une caractéristique précise (par exemple : "Le personnage porte-t-il des lunettes ?", "A-t-il les cheveux blonds ?", etc.).
+      Le joueur peut mentir une seule fois au cours du jeu, ce qui ajoute un niveau de complexité et de challenge.
+    </p>
+
+    <p>
+      Pour gérer ce mensonge unique, le système utilise un algorithme de score qui calcule la correspondance entre les réponses fournies
+      et les caractéristiques de chaque personnage.
+      Même si une réponse est fausse, le jeu pondère les résultats pour identifier le personnage qui correspond le mieux à l’ensemble des réponses.
+      Ainsi, à la fin de la partie, le personnage avec le score le plus élevé est proposé comme réponse.
+    </p>
+
+    <p>
+      Cette approche permet de conserver une expérience de jeu fluide et intéressante, en évitant qu’un simple mensonge ne fasse perdre la partie au système.
+      Techniquement, cela implique de parcourir la liste des personnages et de mettre à jour dynamiquement leur score en fonction des réponses,
+      ce qui demande une gestion attentive des données et des conditions dans le code JavaScript.
+    </p>
+
+    <p>
+      Le code a été structuré pour être clair et modulaire, facilitant la maintenance et les futures améliorations,
+      comme l’ajout de nouveaux personnages ou de fonctionnalités supplémentaires.
+    </p>
+    
+
+    <div style="text-align:center;">
+      <a href="https://zinedineamor.github.io/quiestcedescartes/"  class="btn-play" role="button" aria-label="Jouer au jeu Qui est-ce ?">
+        Jouer à "Qui est-ce ?"
+      </a>
+    </div>
+
+  </main>
+
+<footer class="footer">
+    <p>&copy; 2025 Zinedine AMOR - Tous droits réservés</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/zinedine-amor-441492311/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/zinedineamor" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:zinedineamor.pro@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>
