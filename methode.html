@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comment je fais ma veille</title>
+  <style>
+    /* Fond dégradé jaune-orange sur tout le body */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #FF7F00, #FFD500);
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+    /* Conteneur central gris foncé, élargi */
+    .container {
+      background-color: #1a1a1a;
+      max-width: 1200px;  /* plus large */
+      width: 100%;
+      border-radius: 15px;
+      padding: 35px 40px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      color: #ddd;
+      line-height: 1.6;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      color: #FF7F00;
+      margin-bottom: 15px;
+      font-weight: 900;
+      text-align: center;
+      font-size: 2.8rem;
+      text-shadow: 0 0 8px rgba(255,127,0,0.7);
+    }
+
+    h2 {
+      color: #FF7F00;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      border-left: 5px solid #FF7F00;
+      padding-left: 12px;
+      text-shadow: 0 0 6px rgba(255,127,0,0.6);
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 1100px;
+      margin-bottom: 18px;
+      text-align: justify;
+      color: #ddd;
+    }
+
+    /* Texte important en orange */
+    .highlight {
+      color: #FF7F00;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    /* Liste stylisée */
+    ul.keywords {
+      background: #2b2b2b;
+      border-radius: 10px;
+      padding: 15px 25px;
+      list-style: none;
+      margin: 10px 0 25px 0;
+      box-shadow: inset 0 0 10px rgba(255,127,0,0.3);
+    }
+    ul.keywords li {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+      color: #ffa833;
+      font-weight: 600;
+      position: relative;
+      padding-left: 20px;
+    }
+    ul.keywords li::before {
+      content: "➜";
+      position: absolute;
+      left: 0;
+      color: #FF7F00;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Grille pour les screens Notion */
+    .notion-screens {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+    .notion-screens img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(255,127,0,0.5);
+      border: 3px solid #FF7F00;
+      object-fit: contain;
+      background: #111;
+    }
+
+    /* Bouton retour esthétique */
+    .btn-back {
+      display: inline-block;
+      margin-top: 40px;
+      background-color: #FF7F00;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(255,127,0,0.7);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-back:hover {
+      background-color: #e56f00;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(255,127,0,0.9);
+    }
+
+    /* Animation d'apparition douce */
+    .fade-in {
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      p, ul.keywords li {
+        font-size: 1rem;
+      }
+      .btn-back {
+        padding: 10px 22px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="container fade-in" role="main" aria-labelledby="main-title">
+    <h1 id="main-title">Comment je fais ma veille</h1>
+
+    <p>Pour organiser ma veille technologique, <span class="highlight">j'utilise Google Alert</span>, que j'ai paramétré avec plusieurs mots-clés pertinents pour mon domaine :</p>
+    
+    <ul class="keywords" aria-label="Mots-clés Google Alert">
+      <li>automatisation + entreprise</li>
+      <li>automatisation des processus métier</li>
+      <li>BPM tools</li>
+      <li>Business Process Automation</li>
+      <li>hyperautomation</li>
+      <li>robotic process automation</li>
+      <li>workflow automation</li>
+    </ul>
+
+    <p>J'ai créé un compte Google dédié uniquement à la réception de ces alertes pour garder mes mails bien organisés et éviter le bruit.</p>
+
+    <p>Chaque jour, je récupère les articles reçus dans ces alertes et je les classe dans un tableau sur l'application <span class="highlight">Notion</span>. Ce tableau comprend :</p>
+
+    <ul class="keywords" aria-label="Catégories des articles dans Notion">
+      <li>Les articles reçus</li>
+      <li>Ceux que je garde pour approfondir</li>
+      <li>Ceux que je décide de ne pas conserver</li>
+    </ul>
+
+    <!-- Section images Notion -->
+    <div class="notion-screens" aria-label="Captures d'écran Notion">
+      <img src="images/notion1.png" alt="Capture écran tableau Notion avec les articles reçus" />
+      <img src="images/notion2.png" alt="Capture écran tableau Notion avec les articles sélectionnés" />
+    </div>
+
+    <p>Ensuite, chaque semaine, je sélectionne un article pertinent parmi ceux que j'ai conservés et je l'intègre dans ma veille technologique officielle.</p>
+
+    <p>Cette méthode me permet de rester à jour efficacement sans être submergé par trop d'informations, tout en gardant une organisation claire et structurée.</p>
+
+    <a href="veille.html" class="btn-back" aria-label="Retour à la page Veille Technologique">← Retour à la veille</a>
+  </article>
+
+</body>
+</html>
