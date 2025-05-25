@@ -19,7 +19,7 @@
 
     main {
       max-width: 900px;
-        margin: 100px auto 60px;
+      margin: 100px auto 60px;
       background-color: #1a1a1a;
       border-radius: 10px;
       padding: 25px 30px;
@@ -30,6 +30,23 @@
     h1, h2 {
       color: #FF7F00;
       margin-bottom: 0.5em;
+    }
+
+    /* Nouveau style pour le bouton */
+    .btn-methode {
+      display: inline-block;
+      background-color: #FF7F00;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-methode:hover {
+      background-color: #e66f00;
     }
 
     section.intro p {
@@ -46,6 +63,7 @@
     }
 
     .article {
+      position: relative;
       background-color: #222;
       width: 280px;
       border-radius: 8px;
@@ -97,6 +115,36 @@
       text-align: right;
     }
 
+    .info-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #FF7F00;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .tooltip-box {
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 10px;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      width: 240px;
+      z-index: 20;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
     @media (max-width: 600px) {
       .articles {
         flex-direction: column;
@@ -106,11 +154,14 @@
         width: 90%;
       }
     }
+    a, u, ins {
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR chargée dynamiquement -->
+  <!-- NAVBAR -->
   <div id="navbar"></div>
   <script>
     fetch('navbar.html')
@@ -123,6 +174,8 @@
   <main>
     <h1>Veille Technologique</h1>
 
+    <a href="methode.html" class="btn-methode">Comment je fais ma veille</a>
+
     <section class="intro">
       <h2>Automatisation des processus métier</h2>
       <p>Cette veille explore comment automatiser les tâches répétitives et les workflows en entreprise grâce à Power Automate, pour gagner du temps et améliorer l’efficacité des processus métier, notamment dans le domaine de la sécurité informatique.</p>
@@ -130,26 +183,52 @@
 
     <section class="articles">
 
-      <a href="https://www.ibm.com/fr-fr/topics/business-process-automation" class="article" target="_blank" rel="noopener">
-        <img src="images/IBM.png" alt="Introduction à Power Automate" />
-        <div class="article-content">
-          <h3 class="article-title">Qu’est-ce que l’automatisation des processus métier ?</h3>
-          <p class="article-desc">Une présentation simple de l’automatisation des processus métier et de ses avantages pour améliorer l’efficacité en entreprise.</p>
-          <div class="article-date">Ajouté le 18/05/2025</div>
-        </div>
-      </a>
+      <!-- ARTICLE 1 -->
+      <div class="article">
+        <button class="info-btn" onclick="toggleTooltip(this)">i</button>
+        <div class="tooltip-box">J'ai choisi cet article car il introduit très bien les bases de l'automatisation des processus métier, utile pour débuter la veille.</div>
+        <a href="https://www.ibm.com/fr-fr/topics/business-process-automation" target="_blank" rel="noopener">
+          <img src="images/IBM.png" alt="Introduction à Power Automate" />
+          <div class="article-content">
+            <h3 class="article-title">Qu’est-ce que l’automatisation des processus métier ?</h3>
+            <p class="article-desc">Une présentation simple de l’automatisation des processus métier et de ses avantages pour améliorer l’efficacité en entreprise.</p>
+            <div class="article-date">Ajouté le 18/05/2025</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ARTICLE 2 -->
+      <div class="article">
+        <button class="info-btn" onclick="toggleTooltip(this)">i</button>
+        <div class="tooltip-box">J’ai choisi cet article car il souligne l’importance de ne pas tout miser sur l’automatisation en cybersécurité. Il met en avant la complémentarité entre l’IA, utile pour détecter rapidement les menaces, et l’expertise humaine, indispensable pour analyser et prendre des décisions adaptées face aux attaques complexes. Ce juste équilibre me paraît essentiel pour garantir une sécurité efficace.</div>
+        <a href="https://www.solutions-numeriques.com/ia-et-cybersecurite-trouver-le-bon-equilibre-entre-automatisation-et-intervention-humaine/" target="_blank" rel="noopener">
+          <img src="images/solutionnumeriques.png" alt="IA et cybersécurité" />
+          <div class="article-content">
+            <h3 class="article-title">IA et cybersécurité : équilibre entre automatisation et intervention humaine</h3>
+            <p class="article-desc">L'article montre l'importance de bien doser l'IA et l'humain en cybersécurité. L'IA détecte les menaces, mais l'humain reste indispensable.</p>
+            <div class="article-date">Ajouté le 24/05/2025</div>
+          </div>
+        </a>
+      </div>
 
     </section>
   </main>
 
-<footer class="footer">
-        <p>&copy; 2025 Zinedine AMOR - Tous droits réservés</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/zinedine-amor-441492311/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/YominoRigolo" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="zinedineamor.pro@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-    </footer>
+  <footer class="footer">
+    <p>&copy; 2025 Zinedine AMOR - Tous droits réservés</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/zinedine-amor-441492311/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/YominoRigolo" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:zinedineamor.pro@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTooltip(button) {
+      const tooltip = button.nextElementSibling;
+      tooltip.style.display = (tooltip.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
 
 </body>
 </html>
